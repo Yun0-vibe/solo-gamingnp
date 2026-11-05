@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://sologamingnp.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://solo-gamingnp.vercel.app";
 
 export const CHANNEL = {
   name: "Solo Gamingnp",
