@@ -24,14 +24,14 @@ export default async function VideosPage() {
         <div aria-hidden="true" className="absolute inset-0 grid-lines opacity-30" />
         <div
           aria-hidden="true"
-          className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-brand/15 blur-[120px]"
+          className="absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(closest-side,rgba(255,35,56,0.16),transparent)]"
         />
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
         />
 
-        <div className="reveal-up relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
           <Eyebrow>Video archive</Eyebrow>
           <h1 className="mt-4 font-display text-5xl uppercase leading-[0.88] text-cream sm:text-6xl lg:text-7xl">
             Every upload.
@@ -46,7 +46,7 @@ export default async function VideosPage() {
             {[
               "Auto-synced with YouTube",
               `${videos.length} recent uploads`,
-              "New drops most nights",
+              "Search · filter · sort",
             ].map((chip) => (
               <span
                 key={chip}
@@ -80,7 +80,7 @@ export default async function VideosPage() {
         </div>
       </section>
 
-      <section className="reveal-up mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-14">
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-14">
         <VideoGrid videos={videos} />
 
         <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-line bg-panel p-6 sm:flex-row sm:items-center sm:justify-between">

@@ -34,11 +34,11 @@ export function LiveBadge({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/live"
-      className={`group inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/15 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-soft backdrop-blur transition hover:border-brand hover:bg-brand hover:text-white ${className}`}
+      className={`group inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/15 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-soft transition hover:border-brand hover:bg-brand hover:text-white ${className}`}
     >
       <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-brand group-hover:bg-white" />
+        <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-40" />
+        <span className="relative inline-flex h-2 w-2 animate-pulse-dot rounded-full bg-brand group-hover:bg-white" />
       </span>
       Live now
     </Link>

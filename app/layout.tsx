@@ -3,6 +3,7 @@ import { Bakbak_One, Sora } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { BackToTop } from "@/components/back-to-top";
 import { CHANNEL, SITE_URL, SOCIALS } from "@/lib/channel";
 
 const display = Bakbak_One({
@@ -109,6 +110,10 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        <BackToTop />
+        <noscript>
+          <style>{`.reveal{opacity:1;transform:none}`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

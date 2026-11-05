@@ -32,7 +32,7 @@ export default async function LivePage() {
       <div aria-hidden="true" className="absolute inset-0 grid-lines opacity-25" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 h-[30rem] w-[30rem] animate-glow-pulse rounded-full bg-brand/15 blur-[140px]"
+        className="pointer-events-none absolute -top-40 right-0 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(closest-side,rgba(255,35,56,0.16),transparent)]"
       />
 
       <div className="relative mx-auto max-w-[1500px] px-5 lg:px-8">
@@ -73,7 +73,7 @@ export default async function LivePage() {
 
         {liveId ? (
           <div className="mt-8 grid gap-4 xl:grid-cols-[minmax(0,1fr)_390px]">
-            <div className="brand-glow relative aspect-video overflow-hidden rounded-2xl border border-line bg-black">
+            <div className="relative aspect-video overflow-hidden rounded-xl border border-line bg-black">
               <iframe
                 src={`https://www.youtube.com/embed/${liveId}?autoplay=1&rel=0`}
                 title="Solo Gamingnp live stream"
@@ -83,12 +83,12 @@ export default async function LivePage() {
               />
             </div>
 
-            <div className="flex h-[560px] flex-col overflow-hidden rounded-2xl border border-line bg-panel xl:h-auto">
+            <div className="flex h-[560px] flex-col overflow-hidden rounded-xl border border-line bg-panel xl:h-auto">
               <div className="flex items-center justify-between border-b border-line px-4 py-3">
                 <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
                   <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-40" />
+                    <span className="relative inline-flex h-1.5 w-1.5 animate-pulse-dot rounded-full bg-brand" />
                   </span>
                   Live chat
                 </span>
@@ -199,7 +199,7 @@ export default async function LivePage() {
               Auto-live detection
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-white/45">
-              This page checks the channel every 30 minutes and automatically
+              This page checks the channel every 30 seconds and automatically
               switches between live and offline.
             </p>
           </div>

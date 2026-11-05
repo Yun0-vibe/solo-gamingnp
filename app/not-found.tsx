@@ -10,7 +10,7 @@ export default function NotFound() {
       <div aria-hidden="true" className="absolute inset-0 grid-lines opacity-30" />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[120px]"
+        className="absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,35,56,0.18),transparent)]"
       />
       <div className="relative">
         <p className="font-display text-[clamp(6rem,22vw,14rem)] uppercase leading-none text-brand">

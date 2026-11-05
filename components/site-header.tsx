@@ -46,10 +46,10 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
         solid
-          ? "border-b border-line bg-ink/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          ? "border-line bg-ink/95"
+          : "border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
@@ -80,7 +80,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <LiveBadge className="hidden xl:inline-flex" />
+          <span className="hidden xl:block">
+            <LiveBadge />
+          </span>
           <Link
             href={CHANNEL.url}
             target="_blank"
@@ -107,7 +109,7 @@ export function SiteHeader() {
       {open && (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto border-t border-line bg-ink/95 px-5 py-8 backdrop-blur-xl lg:hidden"
+          className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto border-t border-line bg-ink px-5 py-8 lg:hidden"
         >
           <nav className="flex flex-col" aria-label="Mobile">
             {NAV.map((item, index) => (

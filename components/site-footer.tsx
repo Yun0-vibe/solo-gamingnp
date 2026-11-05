@@ -10,6 +10,7 @@ const EXPLORE = [
   { label: "Video archive", href: "/videos" },
   { label: "About Solo", href: "/#about" },
   { label: "Routine", href: "/#routine" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Support the grind", href: "/#support" },
 ];
 
