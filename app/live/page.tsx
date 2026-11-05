@@ -6,6 +6,7 @@ import {
   MessageSquare,
   Play,
   Radio,
+  ThumbsUp,
   Youtube,
 } from "lucide-react";
 import { CHANNEL, formatDate } from "@/lib/channel";
@@ -59,6 +60,17 @@ export default async function LivePage() {
               <Youtube className="h-4 w-4" />
               Subscribe
             </a>
+            {liveId && (
+              <a
+                href={`https://www.youtube.com/watch?v=${liveId}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-xs font-bold uppercase tracking-wide text-cream transition hover:border-brand hover:text-brand"
+              >
+                <ThumbsUp className="h-4 w-4" />
+                Like on YouTube
+              </a>
+            )}
             <a
               href={CHANNEL.discord}
               target="_blank"

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Check, ExternalLink, Link2, X } from "lucide-react";
+import { Check, ExternalLink, Link2, ThumbsUp, X } from "lucide-react";
 import { formatViews, type Video } from "@/lib/channel";
 
 export function YouTubeLightbox({
@@ -104,6 +104,15 @@ export function YouTubeLightbox({
               )}
               {copied ? "Link copied" : "Copy link"}
             </button>
+            <a
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-white/70 transition hover:border-brand hover:text-brand"
+            >
+              <ThumbsUp className="h-3.5 w-3.5" />
+              Like on YouTube
+            </a>
             <a
               href={`https://www.youtube.com/watch?v=${video.id}`}
               target="_blank"
