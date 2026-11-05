@@ -19,6 +19,9 @@ import { VideoCard } from "@/components/video-card";
 import { Eyebrow } from "@/components/eyebrow";
 import { CopyButton } from "@/components/copy-button";
 import { SocialIcon } from "@/components/social-icon";
+import { CountUp } from "@/components/count-up";
+import { HeroSpotlight } from "@/components/hero-spotlight";
+import { LiveBadge } from "@/components/live-badge";
 
 export const revalidate = 1800;
 
@@ -51,51 +54,56 @@ export default async function HomePage() {
     <main id="main">
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-20">
+        <div className="absolute inset-0 -z-20 overflow-hidden">
           <Image
             src="/assets/hero.png"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[68%_center]"
+            className="animate-slow-zoom object-cover object-[68%_center]"
           />
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/25" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-transparent to-ink/70" />
         <div className="absolute inset-0 -z-10 grid-lines opacity-40" />
         <div className="absolute inset-0 -z-10 grain" />
+        <HeroSpotlight />
 
         <div className="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-5 pb-20 pt-32 lg:px-8 lg:pb-24">
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <div>
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/70">
-                  Live from Nepal · Est. 2023
-                </span>
+              <div className="intro-up intro-1 flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/70">
+                    Made in Nepal · Est. 2023
+                  </span>
+                </div>
+                <LiveBadge />
               </div>
 
-              <h1 className="mt-6 font-display text-[clamp(3.6rem,10vw,7.8rem)] uppercase leading-[0.86] tracking-tight text-cream">
+              <h1 className="intro-up intro-2 mt-6 font-display text-[clamp(3.2rem,9vw,7rem)] uppercase leading-[0.88] tracking-tight text-cream">
                 Namaste,
                 <span className="block text-brand drop-shadow-[0_0_45px_rgba(255,35,56,0.35)]">
                   Gang.
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
+              <p className="intro-up intro-3 mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
                 Valorant rank pushes, Roblox nights and full-squad chaos —
                 daily gaming from Nepal. Pull up, the grind doesn&apos;t stop.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="intro-up intro-4 mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="#latest"
-                  className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-brand px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-soft"
+                  className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-brand px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-soft"
                 >
+                  <span className="shine pointer-events-none absolute inset-0" />
                   <Play className="h-4 w-4 fill-current" />
                   Watch the latest
                 </Link>
@@ -110,11 +118,11 @@ export default async function HomePage() {
                 </a>
               </div>
 
-              <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-white/10 pt-6">
+              <dl className="intro-up intro-5 mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-white/10 pt-6">
                 <div>
                   <dt className="sr-only">YouTube subscribers</dt>
                   <dd className="font-display text-3xl leading-none text-cream">
-                    {CHANNEL.subscribers}
+                    <CountUp value={1.27} decimals={2} suffix="K" />
                   </dd>
                   <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
                     YouTube family
@@ -123,7 +131,7 @@ export default async function HomePage() {
                 <div>
                   <dt className="sr-only">Recent uploads</dt>
                   <dd className="font-display text-3xl leading-none text-cream">
-                    {videos.length}
+                    <CountUp value={videos.length} />
                   </dd>
                   <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
                     Recent uploads
@@ -141,7 +149,9 @@ export default async function HomePage() {
               </dl>
             </div>
 
-            <FeaturedVideo video={featured} />
+            <div className="intro-up intro-6">
+              <FeaturedVideo video={featured} />
+            </div>
           </div>
         </div>
       </section>
@@ -151,7 +161,7 @@ export default async function HomePage() {
       {/* Latest videos */}
       <section id="latest" className="relative py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="reveal-up flex flex-wrap items-end justify-between gap-6">
             <div>
               <Eyebrow>The upload feed</Eyebrow>
               <h2 className="mt-4 font-display text-4xl uppercase leading-[0.92] text-cream sm:text-5xl lg:text-6xl">
@@ -171,13 +181,9 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {videos.slice(0, 6).map((video, index) => (
-              <VideoCard
-                key={video.id}
-                video={video}
-                priority={index < 3}
-              />
+          <div className="reveal-up mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {videos.slice(0, 6).map((video) => (
+              <VideoCard key={video.id} video={video} />
             ))}
           </div>
         </div>
@@ -190,7 +196,7 @@ export default async function HomePage() {
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-            <div>
+            <div className="reveal-up">
               <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-line">
                 <Image
                   src="/assets/banner.jpg"
@@ -226,7 +232,7 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div>
+            <div className="reveal-up">
               <Eyebrow>The solo story</Eyebrow>
               <h2 className="mt-4 font-display text-4xl uppercase leading-[0.92] text-cream sm:text-5xl lg:text-6xl">
                 One solo grind.
@@ -296,7 +302,7 @@ export default async function HomePage() {
           className="pointer-events-none absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-brand/10 blur-[120px]"
         />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="max-w-2xl">
+          <div className="reveal-up max-w-2xl">
             <Eyebrow>The routine</Eyebrow>
             <h2 className="mt-4 font-display text-4xl uppercase leading-[0.92] text-cream sm:text-5xl lg:text-6xl">
               When the gang <span className="text-brand">pulls up</span>
@@ -307,7 +313,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="reveal-up mt-10 grid gap-5 md:grid-cols-3">
             {ROUTINE.map((item, index) => (
               <div
                 key={item.title}
@@ -342,10 +348,10 @@ export default async function HomePage() {
       {/* Community */}
       <section id="community" className="border-t border-line py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-brand/20 via-panel to-panel p-7 sm:p-10 lg:p-14">
+          <div className="reveal-up relative overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-brand/20 via-panel to-panel p-7 sm:p-10 lg:p-14">
             <div
               aria-hidden="true"
-              className="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-brand/25 blur-[110px]"
+              className="absolute -right-20 -top-24 h-72 w-72 animate-glow-pulse rounded-full bg-brand/25 blur-[110px]"
             />
             <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
               <div>
@@ -414,7 +420,7 @@ export default async function HomePage() {
       {/* Support */}
       <section id="support" className="border-t border-line bg-ink-2 py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="max-w-2xl">
+          <div className="reveal-up max-w-2xl">
             <Eyebrow>Support</Eyebrow>
             <h2 className="mt-4 font-display text-4xl uppercase leading-[0.92] text-cream sm:text-5xl lg:text-6xl">
               Fuel <span className="text-brand">the grind</span>
@@ -425,7 +431,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="reveal-up mt-10 grid gap-5 lg:grid-cols-2">
             <div className="rounded-2xl border border-brand/30 bg-gradient-to-br from-brand/15 via-panel to-panel p-7">
               <div className="flex items-center justify-between">
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-soft">
@@ -495,7 +501,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 rounded-2xl bg-brand p-7 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="reveal-up mt-10 flex flex-col gap-5 rounded-2xl bg-brand p-7 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
                 Business &amp; collabs

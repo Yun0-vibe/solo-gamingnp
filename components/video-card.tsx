@@ -6,18 +6,12 @@ import { Play } from "lucide-react";
 import { formatDate, formatViews, type Video } from "@/lib/channel";
 import { YouTubeLightbox } from "./youtube-lightbox";
 
-export function VideoCard({
-  video,
-  priority = false,
-}: {
-  video: Video;
-  priority?: boolean;
-}) {
+export function VideoCard({ video }: { video: Video }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <article className="group relative overflow-hidden rounded-2xl border border-line bg-panel transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-[0_30px_80px_-40px_rgba(255,35,56,0.6)]">
+      <article className="video-card group relative overflow-hidden rounded-2xl border border-line bg-panel hover:border-brand/50 hover:shadow-[0_30px_80px_-40px_rgba(255,35,56,0.6)]">
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -29,11 +23,11 @@ export function VideoCard({
               src={video.thumb}
               alt=""
               fill
-              priority={priority}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover transition duration-500 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-black/20" />
+            <span className="shine pointer-events-none absolute inset-0" />
             <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cream backdrop-blur">
               {video.tag}
             </span>

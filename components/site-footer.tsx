@@ -5,6 +5,7 @@ import { Logo } from "./logo";
 import { SocialIcon } from "./social-icon";
 
 const EXPLORE = [
+  { label: "Live stream", href: "/live" },
   { label: "Latest videos", href: "/#latest" },
   { label: "Video archive", href: "/videos" },
   { label: "About Solo", href: "/#about" },

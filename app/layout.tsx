@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Space_Grotesk } from "next/font/google";
+import { Bakbak_One, Sora } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CHANNEL, SITE_URL, SOCIALS } from "@/lib/channel";
 
-const anton = Anton({
+const display = Bakbak_One({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-anton",
+  variable: "--font-display-face",
   display: "swap",
 });
 
-const grotesk = Space_Grotesk({
+const sans = Sora({
   subsets: ["latin"],
-  variable: "--font-grotesk",
+  variable: "--font-sans-face",
   display: "swap",
 });
 
@@ -98,7 +98,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${grotesk.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
         <a
           href="#main"

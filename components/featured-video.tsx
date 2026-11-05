@@ -32,6 +32,7 @@ export function FeaturedVideo({ video }: { video: Video }) {
               className="object-cover transition duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/30" />
+            <span className="shine pointer-events-none absolute inset-0" />
 
             <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
               <span className="inline-flex items-center gap-2 rounded-full bg-brand px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">

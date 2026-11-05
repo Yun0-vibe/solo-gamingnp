@@ -52,12 +52,8 @@ export function VideoGrid({ videos }: { videos: Video[] }) {
       </div>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {visible.map((video, index) => (
-          <VideoCard
-            key={video.id}
-            video={video}
-            priority={index < 3 && active === "All"}
-          />
+        {visible.map((video) => (
+          <VideoCard key={video.id} video={video} />
         ))}
       </div>
 

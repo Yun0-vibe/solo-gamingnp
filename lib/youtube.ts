@@ -43,6 +43,24 @@ function parseFeed(xml: string): Video[] {
     .filter((video): video is Video => video !== null);
 }
 
+export async function getLiveVideoId(): Promise<string | null> {
+  try {
+    const response = await fetch(`https://www.youtube.com/${CHANNEL.handle}/live`, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; SoloGamingnpSite/1.0)" },
+      next: { revalidate: 60 },
+    });
+
+    if (!response.ok) return null;
+
+    const html = await response.text();
+    if (!/"isLive":true/.test(html)) return null;
+
+    return html.match(/"videoId":"([A-Za-z0-9_-]{11})"/)?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function getVideos(): Promise<Video[]> {
   try {
     const response = await fetch(

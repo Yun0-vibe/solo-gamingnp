@@ -7,9 +7,11 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { CHANNEL, SOCIALS } from "@/lib/channel";
 import { Logo } from "./logo";
 import { SocialIcon } from "./social-icon";
+import { LiveBadge } from "./live-badge";
 
 const NAV = [
   { label: "Home", href: "/" },
+  { label: "Live", href: "/live" },
   { label: "Videos", href: "/videos" },
   { label: "About", href: "/#about" },
   { label: "Routine", href: "/#routine" },
@@ -56,24 +58,29 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {NAV.map((item) => {
             const active =
-              item.href === "/videos" && pathname.startsWith("/videos");
+              (item.href === "/videos" && pathname.startsWith("/videos")) ||
+              (item.href === "/live" && pathname.startsWith("/live"));
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`rounded-full px-3.5 py-2 text-[13px] font-medium transition ${
+                className={`group inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-medium transition ${
                   active
                     ? "text-brand"
                     : "text-white/65 hover:bg-white/5 hover:text-cream"
                 }`}
               >
-                {item.label}
+                {item.label === "Live" && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_10px_rgba(255,35,56,0.8)]" />
+                )}
+                {active ? item.label : <span className="link-underline">{item.label}</span>}
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-2">
+          <LiveBadge className="hidden xl:inline-flex" />
           <Link
             href={CHANNEL.url}
             target="_blank"
@@ -149,6 +156,11 @@ export function SiteHeader() {
           </div>
         </div>
       )}
+
+      <div
+        aria-hidden="true"
+        className="scroll-progress absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-brand-deep via-brand to-brand-soft"
+      />
     </header>
   );
 }
